@@ -31,7 +31,7 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 			LocationFinderAppService.getSearchData(lattitude,longitude).then(function(response){
 
 				console.log("response",response.data);
-
+				$scope.searchData = response.data.results;
 			});
 
 		});

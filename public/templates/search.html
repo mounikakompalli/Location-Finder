@@ -12,9 +12,35 @@
 			  
 	        </div>
 	    </div>
-		<div  id="map" style=" height:1000px; 
-		    width:1000px; 
-		    box-shadow: 3px 3px 10px gray;"></div>
+		<div class="row">
+			<div class="row" id="map" style=" height:1000px; 
+			    width:1000px; 
+			    box-shadow: 3px 3px 10px gray;"></div>
+			<div class="container-fluid">
+				<div class="row">
+	
+			    	<table class="table table-hover table-striped">
+			  	 	   <thead>
+			  		 	  <tr><th>Places List</th></tr>
+			  	 	   </thead>
+			      	 <tbody>
+			        	 <tr  ng-repeat="eachLocation in searchData | filter:searchList" style="cursor:pointer">
+					  	   <td>
+								<ul>
+									<img src="{{eachLocation.icon}}"></img>
+									<a href="#/locations/{{eachLocation.place_id}}">{{ eachLocation.name }} </a>
+									{{ eachLocation.vicinity }}
+								</ul>
+						   </td>
+			        	</tr>
+			      	</tbody>
+			       </table>
+				</div>	
+			</div>
+			
+			
+		</div>
+		
 		
 <!-- 		<div load-list ng-hide="!searchData.length"> </div>
  -->	</div>
