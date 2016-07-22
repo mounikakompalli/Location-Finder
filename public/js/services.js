@@ -15,7 +15,4 @@ angular.module("LocationFinder.services",[]).service("LocationFinderAppService",
             	alert("Error finding data");
        	 	});
 	};
-
-
-
 })
