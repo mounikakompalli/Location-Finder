@@ -1,7 +1,5 @@
 angular.module("LocationFinder.controllers",[]).controller("LocationSearchController",['$scope','$location','LocationFinderAppService',function($scope,$location,LocationFinderAppService){
 
-	
-
 	$scope.searchClicked = function(zipCode){
 
 		var zipCode = "23508";
