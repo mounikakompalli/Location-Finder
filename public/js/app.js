@@ -9,11 +9,4 @@ locationSearchApp.config(function($routeProvider) {
         templateUrl: "templates/search.html",
         controller: "LocationSearchController"
     })
-        .when("/locations/:placeId", {
-            templateUrl: "templates/locationDetail.html",
-            controller: "LocationDetailController"
-        })
-        .otherwise({
-            redirectTo: "/"
-        })
 });
