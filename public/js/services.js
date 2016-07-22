@@ -1,4 +1,5 @@
-angular.module("LocationFinder.services",[]).service("LocationFinderAppService",function($scope,$location){
+
+angular.module("LocationFinder.services",[]).service("LocationFinderAppService",function($http){
 
 	this.getSearchData = function(lat,long){
 
