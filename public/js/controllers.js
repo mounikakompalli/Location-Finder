@@ -1,4 +1,4 @@
-angular.module("LocationFinder.controllers",[]).controller("LocationSearchController",['$scope','$location','LocationFinderAppService',function($scope,$location,LocationFinderAppService){
+angular.module("LocationFinder.controllers",[]).controller("LocationSearchController",['$scope','$location',function($scope,$location){
 
 	
 
