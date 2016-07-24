@@ -17,7 +17,7 @@ var server = app.listen(process.env.PORT || 8080, function () {
 app.get("/locationsAround/:latitude/:longitude", function(req, res) {
     
 	var webAPIUrl = "/maps/api/place/nearbysearch/json?location=";
-	webAPIUrl+=req.params.latitude+","+req.params.longitude+"&radius=500&key="+googleAPIKey;
+	webAPIUrl+=req.params.latitude+","+req.params.longitude+"&radius=200&key="+googleAPIKey;
 
 	var options = {
 	  host: 'maps.googleapis.com',
