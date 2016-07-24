@@ -23,7 +23,6 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 	
 	$scope.searchClicked = function(zipCode){
 
-		var zipCode = "23508";
 
 		var geoCoder = new google.maps.Geocoder();
 
