@@ -13,6 +13,6 @@ locationSearchApp.config(function($routeProvider) {
     })
     .otherwise({
          redirectTo: "/",
-	   	controller: "ListController"
+	   	controller: "LocationSearchController"
      });
 });

@@ -11,17 +11,9 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 				center: new google.maps.LatLng(lat, lng),
 				mapTypeId: google.maps.MapTypeId.TERRAIN
 			};
-
+			
 			$scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	});
-	
-	
-	$scope.scrollTo = function (id) {
-	    var old = $location.hash();
-	    $location.hash(id);
-	    $anchorScroll();
-	    $location.hash(old);
-	  }
 	
 	$scope.closeAllMarkers = function removeMarkers(){
 	    for(i=0; i<$scope.allMarkers.length; i++){
@@ -31,9 +23,7 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 	
 	$scope.searchClicked = function(zipCode){
 
-
 		var geoCoder = new google.maps.Geocoder();
-
 		geoCoder.geocode({address:zipCode},function(results_array,status){
 
 			var lattitude = results_array[0].geometry.location.lat();
@@ -49,14 +39,12 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 	};
 	
 	 $scope.infoWindow = new google.maps.InfoWindow();
-	 
 	 $scope.allMarkers = [];	 
-	$scope.getPlaceDetails = function(locationId){
+	 $scope.getPlaceDetails = function(locationId){
+	 $scope.closeAllMarkers();
 		
-		$scope.closeAllMarkers();
-		LocationFinderAppService.getPlaceDetailId(locationId).then(function(response){
+	 LocationFinderAppService.getPlaceDetailId(locationId).then(function(response){
 
-			console.log("response",response.data);
 			var place = response.data.result;
 			$scope.marker = new google.maps.Marker({
 			              map: $scope.map,
