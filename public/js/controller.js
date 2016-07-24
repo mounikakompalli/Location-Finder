@@ -71,8 +71,3 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 		});
 	}	
 }])
-.controller("MapController", ['$scope', '$location', '$routeParams',
-    function ($scope, $location, $routeParams) {
- 
-	 
-}])
