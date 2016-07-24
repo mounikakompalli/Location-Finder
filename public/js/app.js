@@ -10,5 +10,9 @@ locationSearchApp.config(function($routeProvider) {
     .when("/", {
         templateUrl: "templates/search.html",
         controller: "LocationSearchController"
-    });
+    })
+    .otherwise({
+         redirectTo: "/",
+	   	controller: "ListController"
+     });
 });
