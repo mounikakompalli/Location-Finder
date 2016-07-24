@@ -66,7 +66,11 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 		               
 			                place.formatted_address+ '<br>' + place.international_phone_number  + '</div>');
 			       $scope.infoWindow.open($scope.map, this);
-			 });	
+			 });
+			 
+			$location.hash('map');
+ 			$anchorScroll();
+			 	
 		});
 	}	
 }])

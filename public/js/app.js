@@ -4,22 +4,6 @@ var locationSearchApp = angular.module("LocationFinder", [
     "ngRoute"
 ]);
 
-locationSearchApp.run(function($rootScope, $location, $anchorScroll, $routeParams) {
-	  	$rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
-			
-			if(oldRoute.loadedTemplateUrl == "templates/book-form.html")
-			{
-				$location.hash('book-from');
-    			$anchorScroll();
-			}
-			else
-			{
-				$location.hash('body-container');
-    			$anchorScroll();
-			}
-	  	});
-})
-
 locationSearchApp.config(function($routeProvider) {
     
 	$routeProvider
