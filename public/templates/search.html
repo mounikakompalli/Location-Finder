@@ -1,7 +1,6 @@
 	<div id="search-container" ng-controller="LocationSearchController">
-	    <div class="container">
-	        <h2>Zip Code</h2>
-	        <div class="panel panel-default" style="float: right">
+	    <div class="container" style="padding-top:10px ;padding-left:10px">
+	        <div class="panel panel-default">
 	           
 			   <div class="panel-body">
    			    	<form class="form-inline" name="searchFrm" novalidate>
@@ -11,12 +10,10 @@
 			   </div>
 			  
 	        </div>
-	    </div>
-		<div class="row">
-			<div class="col-md-6" id="map" style=" height:1000px; 
-			    width:1000px; 
-			    box-shadow: 3px 3px 10px gray;"></div>
-			<div class="col-md-3">
+	   
+		<div class="row" >
+			
+			<div class="col-md-4">
 				
 	
 			    	<table class="table table-hover table-striped">
@@ -25,11 +22,10 @@
 			  	 	   </thead>
 			      	 <tbody>
 			        	 <tr  ng-repeat="eachLocation in searchData | filter:searchList" style="cursor:pointer">
-					  	   <td>
-								<ul>
-									<img src="{{eachLocation.icon}}"></img>
-									<a href="#/locations/{{eachLocation.place_id}}">{{ eachLocation.name }} </a>
-									{{ eachLocation.vicinity }}
+					  	   <td ng-click=getPlaceDetails(eachLocation.place_id)>
+								<ul style="list-style:none">
+									<li>{{ eachLocation.name }}</li>
+									<li>{{ eachLocation.vicinity }}</li>
 								</ul>
 						   </td>
 			        	</tr>
@@ -37,12 +33,20 @@
 			       </table>
 				
 			</div>
+		</div>
+		<div class="row" >	
 			
+			<div class="col-md-8">
+				<div  id="map" style=" height:500px; 
+				    width:100%; 
+				    box-shadow: 3px 3px 10px gray;"></div>				
+			</div>
 			
+		</div>
 		</div>
 		
 		
 <!-- 		<div load-list ng-hide="!searchData.length"> </div>
- -->	</div>
+ -->
   
    </div>

@@ -1,5 +1,5 @@
 
-var googleAPIKey = "AIzaSyCqykw3PCrky_M5n6YQ8qZhGiFlTiHy40c";
+var googleAPIKey = "AIzaSyDMBaQ70diNmXfd-D1wGV1On9dB-r5RIJU";
 var express = require("express");
 var path = require("path");
 var https = require('https');
@@ -14,14 +14,14 @@ var server = app.listen(process.env.PORT || 8080, function () {
     console.log("App now running on port", port);
   });
 
-app.get("/places/:lat/:long", function(req, res) {
+app.get("/locationsAround/:latitude/:longitude", function(req, res) {
     
-	var googleAPIUrl = "/maps/api/place/nearbysearch/json?location=";
-	googleAPIUrl+=req.params.lat+","+req.params.long+"&radius=500&key="+googleAPIKey;
+	var webAPIUrl = "/maps/api/place/nearbysearch/json?location=";
+	webAPIUrl+=req.params.latitude+","+req.params.longitude+"&radius=200&key="+googleAPIKey;
 
 	var options = {
 	  host: 'maps.googleapis.com',
-	  path: googleAPIUrl
+	  path: webAPIUrl
 	};
 
 	https.request(options, function(response){
@@ -38,62 +38,14 @@ app.get("/places/:lat/:long", function(req, res) {
 	}).end();
 });
 
-app.get("/places/:lat/:long", function(req, res) {
-    
-	var googleAPIUrl = "/maps/api/place/nearbysearch/json?location=";
-	googleAPIUrl+=req.params.lat+","+req.params.long+"&radius=500&key="+googleAPIKey;
-
-	var options = {
-	  host: 'maps.googleapis.com',
-	  path: googleAPIUrl
-	};
-
-	https.request(options, function(response){
-		
-		var result = '';
-		response.on('data', function(chunk) {
-		      result += chunk;
-		   });
-		
-		  response.on('end', function() {
-		        var parsed = JSON.parse(result);
-				res.send(parsed);
-		   });
-	}).end();
-});
-
-app.get("/places/:lat/:long", function(req, res) {
-    
-	
-	var googleAPIUrl = "/maps/api/place/nearbysearch/json?location=";
-	googleAPIUrl+=req.params.lat+","+req.params.long+"&radius=500&key="+googleAPIKey;
-	var options = {
-	  host: 'maps.googleapis.com',
-	  path: googleAPIUrl
-	};
-
-	https.request(options, function(response){
-		var result = '';
-		response.on('data', function(chunk) {
-		      result += chunk;
-		   });
-		
-		  response.on('end', function() {
-		        var parsed = JSON.parse(result);
-				res.send(parsed);
-		   });
-		
-	}).end();
-});
-
-app.get("/placeDetail/:placeId", function(req, res) {
+app.get("/locationDetails/:locationId", function(req, res) {
    
-	var googleAPIUrl = "/maps/api/place/details/json?placeid=";
-	googleAPIUrl+=req.params.placeId+"&key="+googleAPIKey;
+	var locationWebAPIUrl = "/maps/api/place/details/json?placeid=";
+	locationWebAPIUrl+=req.params.locationId+"&key="+googleAPIKey;
 
 	var options = {
 	  host: 'maps.googleapis.com',
-	  path: googleAPIUrl
+	  path: locationWebAPIUrl
 	};
 	
 	https.request(options, function(response){
@@ -110,8 +62,7 @@ app.get("/placeDetail/:placeId", function(req, res) {
 });
 
 
-function handleErrorler(res, reason, message, code) {
+function allHandleErrors(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
 }
-
