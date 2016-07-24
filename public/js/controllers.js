@@ -2,6 +2,9 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 
 	
 	
+	
+	
+	
 	var geocoder = new google.maps.Geocoder();
 	geocoder.geocode({address: "23508"},
 	    function(results_array, status) { 
@@ -16,6 +19,14 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 
 			$scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	});
+	
+	
+	$scope.closeAllMarkers = function removeMarkers(){
+	    for(i=0; i<$scope.allMarkers.length; i++){
+	        $scope.allMarkers[i].setMap(null);
+	    }
+	};
+	
 	
 	$scope.searchClicked = function(zipCode){
 
@@ -38,17 +49,23 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 	};
 	
 	 $scope.infoWindow = new google.maps.InfoWindow();
-	$scope.marker = new google.maps.Marker({
-	              map: $scope.map
-	 });
+	 
+	 $scope.allMarkers = [];	 
 	$scope.getPlaceDetails = function(locationId){
 		
-		
+		$scope.closeAllMarkers();
 		LocationFinderAppService.getPlaceDetailId(locationId).then(function(response){
 
 			console.log("response",response.data);
 			var place = response.data.result;
-			$scope.marker.setPosition(place.geometry.location);
+			$scope.marker = new google.maps.Marker({
+			              map: $scope.map,
+			              position: place.geometry.location
+			 });
+			
+			 $scope.allMarkers.push($scope.marker);
+			 
+			 
 			 $scope.infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' +
 		       
 			                place.formatted_address + '<br>' + place.international_phone_number  + '</div>');
