@@ -27,9 +27,9 @@
 			  	 	   </thead>
 			      	 <tbody>
 			        	 <tr  ng-repeat="eachLocation in searchData | filter:searchList" style="cursor:pointer">
-					  	   <td>
+					  	   <td ng-click=getPlaceDetails(eachLocation.place_id)>
 								<ul style="list-style:none">
-									<li><a href="#/locations/{{eachLocation.place_id}}">{{ eachLocation.name }} </a></li>
+									<li>{{ eachLocation.name }}</li>
 									<li>{{ eachLocation.vicinity }}</li>
 								</ul>
 						   </td>
