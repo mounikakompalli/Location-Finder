@@ -15,6 +15,14 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 			$scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	});
 	
+	
+	$scope.scrollTo = function (id) {
+	    var old = $location.hash();
+	    $location.hash(id);
+	    $anchorScroll();
+	    $location.hash(old);
+	  }
+	
 	$scope.closeAllMarkers = function removeMarkers(){
 	    for(i=0; i<$scope.allMarkers.length; i++){
 	        $scope.allMarkers[i].setMap(null);
@@ -68,8 +76,7 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 			       $scope.infoWindow.open($scope.map, this);
 			 });
 			 
-			$location.hash('map');
- 			$anchorScroll();
+			$scope.scrollTo("map")
 			 	
 		});
 	}	
