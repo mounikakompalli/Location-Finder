@@ -1,5 +1,5 @@
 
-var googleAPIKey = "AIzaSyCqykw3PCrky_M5n6YQ8qZhGiFlTiHy40c";
+var googleAPIKey = "AIzaSyDMBaQ70diNmXfd-D1wGV1On9dB-r5RIJU";
 var express = require("express");
 var path = require("path");
 var https = require('https');
