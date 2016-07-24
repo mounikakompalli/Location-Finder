@@ -39,6 +39,8 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 	
 	$scope.getPlaceDetails = function(locationId){
 		
+		 $scope.infoWindow = new google.maps.InfoWindow();
+		
 		LocationFinderAppService.getPlaceDetailId(locationId).then(function(response){
 
 			console.log("response",response.data);
@@ -47,7 +49,7 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 			              map: $scope.map,
 			              position: place.geometry.location
 			 });
-			 $scope.infoWindow = new google.maps.InfoWindow();
+			
 			 $scope.infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' +
 		       
 			                place.formatted_address + '<br>' + place.international_phone_number  + '</div>');
