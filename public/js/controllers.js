@@ -39,8 +39,7 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 	
 	 $scope.infoWindow = new google.maps.InfoWindow();
 	$scope.marker = new google.maps.Marker({
-	              map: $scope.map,
-	              position: place.geometry.location
+	              map: $scope.map
 	 });
 	$scope.getPlaceDetails = function(locationId){
 		
