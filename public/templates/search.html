@@ -27,9 +27,8 @@
 			        	 <tr  ng-repeat="eachLocation in searchData | filter:searchList" style="cursor:pointer">
 					  	   <td>
 								<ul>
-									<img src="{{eachLocation.icon}}"></img>
-									<a href="#/locations/{{eachLocation.place_id}}">{{ eachLocation.name }} </a>
-									{{ eachLocation.vicinity }}
+									<li><a href="#/locations/{{eachLocation.place_id}}">{{ eachLocation.name }} </a></li>
+									<li>{{ eachLocation.vicinity }}</li>
 								</ul>
 						   </td>
 			        	</tr>
