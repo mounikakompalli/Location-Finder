@@ -76,7 +76,7 @@ angular.module("LocationFinder.controllers",[]).controller("LocationSearchContro
 			       $scope.infoWindow.open($scope.map, this);
 			 });
 			 
-			$scope.scrollTo("map")
+			 document.getElementById('map').scrollIntoView();
 			 	
 		});
 	}	
